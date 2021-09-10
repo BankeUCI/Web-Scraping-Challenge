@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>      
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col col-12">
+            <h2>Latest Mars News</h2>
+            <h3>{{mars_info.news_date}}</h3>
+            <h3>{{mars_info.news_title}}</h3>
+            <p>{{mars_info.news_paragraph}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-8">
+            <h2>Featured Mars Image</h2>
+            <img src={{mars_info.featured_image_url}} alt="Featured Mars Image" id="featured-image">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-4">
+            <h2>Mars Facts</h2>
+            <hr class="new1">
+            {{mars_info.mars_facts|safe}}
+        </div>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Mars Hemisphere</h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% for item in mars_info.hemispheres_info %}
+        <div class="col-md-6">
+            <br>
+            <div class="boxmargin">
+                <div class="col-md-6">
+                    <img class="card-img-top hem-pics" src="{{item.img_url}}"/>
+                    <div class="card-body">
+                        <p class="card-text">{{item.title}}</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
